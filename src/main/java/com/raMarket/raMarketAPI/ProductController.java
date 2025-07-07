@@ -1,7 +1,6 @@
-package com.raMarket.raMarketAPI.client;
+package com.raMarket.raMarketAPI;
 
 
-import com.raMarket.raMarketAPI.Product;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

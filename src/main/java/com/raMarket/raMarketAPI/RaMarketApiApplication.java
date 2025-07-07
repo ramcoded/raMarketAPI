@@ -1,4 +1,4 @@
-package com.raMarket.raMarketAPI.client;
+package com.raMarket.raMarketAPI;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
