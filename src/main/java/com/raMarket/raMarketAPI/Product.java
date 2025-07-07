@@ -1,9 +1,11 @@
 package com.raMarket.raMarketAPI;
 
+//No entity yet just mock data
 public class Product {
     private Long id;
     private String productName;
     private Double productPrice;
+
 
     public Product(Long id, String productName, Double productPrice) {
         this.id = id;
