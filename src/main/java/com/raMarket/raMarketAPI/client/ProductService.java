@@ -1,5 +1,6 @@
-package com.raMarket.raMarketAPI;
+package com.raMarket.raMarketAPI.client;
 
+import com.raMarket.raMarketAPI.Product;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
