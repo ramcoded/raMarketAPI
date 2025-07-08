@@ -1,11 +1,18 @@
 package com.raMarket.raMarketAPI;
+import jakarta.persistence.*;
 
-//No entity yet just mock data
+@Entity
+@Table(name = "products")
 public class Product {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String productName;
     private Double productPrice;
 
+    public Product() {}
 
     public Product(Long id, String productName, Double productPrice) {
         this.id = id;

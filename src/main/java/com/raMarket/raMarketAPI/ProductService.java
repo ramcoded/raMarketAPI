@@ -7,49 +7,38 @@ import java.util.List;
 @Service
 public class ProductService {
 
-    private final List<Product> productList = new ArrayList<>();
+    private final ProductRepository repo;
 
-    public ProductService() {
-        productList.add(new Product(1L, "Wireless Mouse", 799.99));
-        productList.add(new Product(2L, "Gaming Chair", 5999.50));
-        productList.add(new Product(3L, "Laptop Stand", 1499.00));
+    public ProductService(ProductRepository repo) {
+        this.repo = repo;
     }
 
     public List<Product> getAllProducts() {
-        return productList;
+        return repo.findAll();
     }
 
     public Product getProductById(Long id) {
-        for (Product product : productList) {
-            if (product.getId().equals(id)) {
-                return product;
-            }
-        }
-        return null;
+        return repo.findById(id).orElse(null);
     }
 
     public Product addProduct(Product product) {
-        productList.add(product);
-        return product;
+        return repo.save(product);
     }
 
     public Product updateProduct(Long id, Product updatedProduct) {
-        for (Product product : productList) {
-            if (product.getId().equals(id)) {
-                product.setProductName(updatedProduct.getProductName());
-                product.setProductPrice(updatedProduct.getProductPrice());
-                return product;
-            }
+        Product existing = getProductById(id);
+        if(existing != null) {
+            existing.setProductName(updatedProduct.getProductName());
+            existing.setProductPrice(updatedProduct.getProductPrice());
+            return repo.save(existing);
         }
         return null;
     }
 
     public boolean deleteProduct(Long id) {
-        for (Product product : productList) {
-            if (product.getId().equals(id)) {
-                productList.remove(product);
-                return true;
-            }
+        if (repo.existsById(id)) {
+            repo.deleteById(id);
+            return true;
         }
         return false;
     }
